@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d2a">
+  <title>StockLint — Inventory CSV quality checks</title>
+  <meta name="description" content="Review inventory CSVs locally: find duplicate SKUs, missing fields, stock and price errors, and export a change log.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar"><div class="container topbar-inner"><a class="brand" href="#top" aria-label="StockLint home"><span class="brand-mark">S<span></span></span> StockLint</a><span class="top-note">OPEN SOURCE · LOCAL FIRST</span></div></header>
+  <main id="top" class="container">
+    <section class="hero" aria-labelledby="hero-title"><div class="eyebrow">INVENTORY DATA, MADE REVIEWABLE</div><h1 id="hero-title">Spot the messy rows<br><em>before your next upload.</em></h1><p>Check an inventory CSV for duplicate SKUs, missing product details, and stock or price errors. See every safe whitespace change, then export a reviewed file and audit log.</p><div class="hero-actions"><a class="button primary" href="#workspace">Check a CSV <span aria-hidden="true">↗</span></a><button class="button secondary" id="sample-top" type="button">Try sample data</button></div><div class="assurance"><span>◇ Runs in your browser</span><span>◇ No account or server upload</span><span>◇ No guessed fixes</span></div></section>
+    <section id="workspace" class="workspace" aria-labelledby="workspace-title"><div class="section-kicker">01 / YOUR FILE</div><div class="section-heading"><div><h2 id="workspace-title">Start with a CSV</h2><p>Use a simple inventory export with SKU, product name, stock, and price columns. Other columns stay in place.</p></div><span class="step-pill">CSV · UP TO 5 MB</span></div>
+      <label class="dropzone" id="dropzone" for="file-input"><span class="upload-icon" aria-hidden="true">↑</span><strong>Choose an inventory CSV</strong><span>or drag and drop it here</span><small>Processed on this device only. No files are sent anywhere.</small><input id="file-input" type="file" accept=".csv,text/csv" aria-label="Choose an inventory CSV"></label>
+      <div class="sample-row"><span>Just exploring?</span><button id="sample" type="button" class="text-button">Load fictional sample inventory <span aria-hidden="true">→</span></button></div>
+      <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+    </section>
+    <section class="workspace results" id="results" aria-labelledby="results-title" hidden><div class="section-kicker">02 / REVIEW</div><div class="section-heading"><div><h2 id="results-title">Quality review</h2><p id="file-label"></p></div><span class="step-pill">NO AUTOMATIC DELETIONS</span></div>
+      <div class="mapping" id="mapping"><div class="mapping-copy"><h3>Match your columns</h3><p>Confirm which source columns mean SKU, product name, stock quantity, and unit price.</p></div><div id="mapping-fields" class="mapping-fields"></div><button class="button primary compact" id="run-check" type="button">Run checks</button></div>
+      <div id="analysis" hidden><div class="metrics"><div><strong id="metric-rows">0</strong><span>Products reviewed</span></div><div><strong id="metric-affected">0</strong><span>Rows with issues</span></div><div><strong id="metric-issues">0</strong><span>Issues found</span></div><div><strong id="metric-changes">0</strong><span>Whitespace changes</span></div></div>
+        <div class="review-note" id="review-note"></div><div class="export-bar"><div><strong>Keep a record of every check.</strong><span>Cleaned CSV retains unresolved values. Review flagged rows before importing anywhere.</span></div><div class="export-actions"><button class="button primary compact" type="button" id="download-clean">Download reviewed CSV</button><button class="button secondary compact" type="button" id="download-report">Download audit log</button></div></div>
+        <div class="list-heading"><h3>Issues to review</h3><span id="issue-count"></span></div><div class="table-scroll"><table><thead><tr><th>CSV line</th><th>Field</th><th>What to check</th></tr></thead><tbody id="issue-body"></tbody></table></div>
+        <div class="list-heading changes-heading"><h3>Changes made</h3><span id="change-count"></span></div><div class="table-scroll"><table><thead><tr><th>CSV line</th><th>Field</th><th>Before → after</th></tr></thead><tbody id="change-body"></tbody></table></div>
+      </div>
+    </section>
+    <section class="how" aria-labelledby="how-title"><div><div class="section-kicker">BUILT FOR TRUST</div><h2 id="how-title">A small tool with a clear job.</h2></div><div class="how-grid"><article><span>01</span><h3>Find trouble early</h3><p>Catch duplicates, blanks, invalid counts, and invalid prices before they travel into another system.</p></article><article><span>02</span><h3>Understand each change</h3><p>Only surrounding whitespace is trimmed automatically. The audit log shows the original and new value.</p></article><article><span>03</span><h3>Stay in control</h3><p>Your CSV is processed in the browser. No vendor connection or direct import is involved.</p></article></div></section>
+  </main><footer><div class="container footer-inner"><strong>StockLint</strong><span>Made as an open-source starter project by Syed Areeb Ali.</span><span class="footer-status">Version 0.1 · Early preview</span></div></footer>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

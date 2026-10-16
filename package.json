@@ -1,0 +1,9 @@
+{
+  "name": "stocklint",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first inventory CSV quality checks for small sellers",
+  "scripts": { "test": "node --test test/*.test.js", "start": "python3 -m http.server 8000" },
+  "license": "MIT"
+}
